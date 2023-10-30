@@ -16,8 +16,9 @@ class Instantiator extends BaseInstantiator implements InstantiatorInterface
         parent::__construct($dispatcher);
     }
 
-    public function instantiate($object)
+    public function instantiate(string $className): object
     {
+        $object = new $className();
         $this->injectDispatcher($object);
 
         return $object;
