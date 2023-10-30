@@ -10,9 +10,14 @@ use Doctrine\Instantiator\InstantiatorInterface;
  */
 class Instantiator implements InstantiatorInterface
 {
+    /**
+     * @var DomainEventDispatcherInterface
+     */
+    private $dispatcher;
+
     public function __construct(DomainEventDispatcherInterface $dispatcher)
     {
-        parent::__construct($dispatcher);
+        $this->dispatcher = $dispatcher;
     }
 
     public function instantiate(string $className): object
